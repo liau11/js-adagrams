@@ -47,14 +47,39 @@ export const drawLetters = () => {
   return handKey;
 };
 
-// export const usesAvailableLetters = (input, lettersInHand) => {
-//   // Implement this method for wave 2
-// };
 
-// export const scoreWord = (word) => {
-//   // Implement this method for wave 3
-// };
+export const usesAvailableLetters = (input, lettersInHand) => {
+  const freqLetterInput = {}
+  const freqLetterHand = {}
 
-// export const highestScoreFrom = (words) => {
-//   // Implement this method for wave 4
-// };
+  for (const letter of input) {
+    if (freqLetterInput[letter]) {
+      freqLetterInput[letter]++;
+    } else {
+      freqLetterInput[letter] = 1;
+    }
+  }
+
+  for (const letter of lettersInHand) {
+    if (freqLetterHand[letter]) {
+      freqLetterHand[letter]++;
+    } else {
+      freqLetterHand[letter] = 1;
+    }
+  }
+
+  for (const letter of Object.keys(freqLetterInput)) {
+    if ((freqLetterInput[letter] > freqLetterHand[letter]) || (freqLetterHand[letter] === undefined)) {
+      return false;
+    }
+  };
+  return true;
+};
+
+export const scoreWord = (word) => {
+  // Implement this method for wave 3
+};
+
+export const highestScoreFrom = (words) => {
+  // Implement this method for wave 4
+};
