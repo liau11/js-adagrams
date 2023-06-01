@@ -38,7 +38,7 @@ export const drawLetters = () => {
     if (!(letter in hand)) {
       hand[letter] = 1;
     } else if (hand[letter] < LETTER_POOL[letter]) {
-      hand[letter] = hand[letter] + 1;
+      hand[letter] = hand[letter]++;
     }
   }
 
