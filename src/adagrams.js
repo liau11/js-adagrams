@@ -77,7 +77,34 @@ export const usesAvailableLetters = (input, lettersInHand) => {
 };
 
 export const scoreWord = (word) => {
-  // Implement this method for wave 3
+  const SCORE_BOARD = {
+    1: new Set(["A", "E", "I", "O", "U", "L", "N", "R", "S", "T"]),
+    2: new Set(["D", "G"]),
+    3: new Set(["B", "C", "M", "P"]),
+    4: new Set(["F", "H", "V", "W", "Y"]),
+    5: new Set(["K"]),
+    8: new Set(["J", "X"]),
+    10: new Set(["Q", "Z"]),
+  }
+
+  let score = 0;
+  const extraPoints = 8;
+  const extraPointsMinLength = 7;
+  const extraPointsMaxLength = 10;
+  const wordLength = word.length;
+
+  for (const letter of word.toUpperCase()) {
+    for (const letterPoint of Object.keys(SCORE_BOARD)) {
+      if (SCORE_BOARD[letterPoint].has(letter)) {
+        score += Number(letterPoint);
+      }
+    }
+  }
+
+  if ((wordLength >= extraPointsMinLength) && (wordLength <= extraPointsMaxLength)) {
+    score += Number(extraPoints);
+  }
+  return score;
 };
 
 export const highestScoreFrom = (words) => {
