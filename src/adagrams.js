@@ -108,5 +108,34 @@ export const scoreWord = (word) => {
 };
 
 export const highestScoreFrom = (words) => {
-  // Implement this method for wave 4
+  const scores = {}
+  let ties = []
+  let highestScore = 0;
+
+  // Get total score for each word in Array 'words'
+  for (const word of words) {
+    scores[word] = scoreWord(word);
+
+    /* reassign Array 'ties' to a new array containing the new word with the highest score */
+    if (scores[word] > highestScore) {
+      highestScore = scores[word];
+      ties = [word]
+    } else if (scores[word] === highestScore) {
+      ties.push(word)
+    }
+  }
+
+  // Find top word amongst the words with the same high score
+  let topWord = ties[0];
+
+  for (const word of ties) {
+    if (word.length === 10) {
+      topWord = word;
+      break;
+    } else if (word.length < topWord.length) {
+      topWord = word;
+    }
+  }
+
+  return { "word": topWord, "score": highestScore }
 };
