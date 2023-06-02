@@ -68,7 +68,7 @@ export const usesAvailableLetters = (input, lettersInHand) => {
     }
   }
 
-  for (const letter of Object.keys(freqLetterInput)) {
+  for (const letter in freqLetterInput) {
     if ((freqLetterInput[letter] > freqLetterHand[letter]) || (freqLetterHand[letter] === undefined)) {
       return false;
     }
