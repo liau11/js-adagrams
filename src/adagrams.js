@@ -116,7 +116,7 @@ export const highestScoreFrom = (words) => {
   for (const word of words) {
     scores[word] = scoreWord(word);
 
-    /* reassign Array 'ties' to a new array containing the new word with the highest score */
+    /* Reassign Array 'ties' to a new array containing the new word with the highest score */
     if (scores[word] > highestScore) {
       highestScore = scores[word];
       ties = [word]
