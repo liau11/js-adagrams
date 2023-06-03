@@ -46,6 +46,7 @@ export default class Adagrams {
     return letterIndex;
   }
 
+
   drawLetters = (letterIndex) => {
     const hand = {};
     const lettersKey = Object.keys(this.letterPool);
@@ -91,6 +92,7 @@ export default class Adagrams {
         return false;
       }
     };
+
     return true;
   };
 
@@ -113,6 +115,7 @@ export default class Adagrams {
     if ((wordLength >= extraPointsMinLength) && (wordLength <= extraPointsMaxLength)) {
       score += Number(extraPoints);
     }
+
     return score;
   };
 
