@@ -40,13 +40,18 @@ export default class Adagrams {
     }
   }
 
-  drawLetters = () => {
+  getRandomLetter = (lettersKey) => {
+    let letterIndex = Math.floor((Math.random() * lettersKey.length));
+
+    return letterIndex;
+  }
+
+  drawLetters = (letterIndex) => {
     const hand = {};
     const lettersKey = Object.keys(this.letterPool);
 
     while (Object.keys(hand).length < this.handSize) {
-      let letterIndex = Math.floor((Math.random() * lettersKey.length));
-      let letter = lettersKey[letterIndex];
+      let letter = lettersKey[this.getRandomLetter(lettersKey)];
 
       if (!(letter in hand)) {
         hand[letter] = 1;
